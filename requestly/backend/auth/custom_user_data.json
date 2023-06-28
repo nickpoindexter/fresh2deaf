@@ -2,6 +2,6 @@
     "enabled": true,
     "mongo_service_name": "mongodb-atlas",
     "database_name": "requestly",
-    "collection_name": "admins",
+    "collection_name": "app_admins",
     "user_id_field": "userid"
 }
