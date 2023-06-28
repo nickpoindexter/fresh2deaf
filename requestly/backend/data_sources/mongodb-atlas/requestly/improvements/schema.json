@@ -1,0 +1,38 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "created": {
+            "bsonType": "timestamp"
+        },
+        "description": {
+            "bsonType": "string"
+        },
+        "email": {
+            "bsonType": "string"
+        },
+        "name": {
+            "bsonType": "string"
+        },
+        "next_steps": {
+            "bsonType": "string"
+        },
+        "notes": {
+            "bsonType": "string"
+        },
+        "size": {
+            "bsonType": "string"
+        },
+        "target_quarter": {
+            "bsonType": "string"
+        },
+        "team": {
+            "bsonType": "string"
+        },
+        "votes": {
+            "bsonType": "int"
+        }
+    },
+    "title": "improvements"
+}
