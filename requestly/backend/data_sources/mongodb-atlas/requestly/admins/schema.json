@@ -1,1 +1,10 @@
-{}
+{
+    "properties": {
+        "admin": {
+            "bsonType": "bool"
+        },
+        "userid": {
+            "bsonType": "string"
+        }
+    }
+}
