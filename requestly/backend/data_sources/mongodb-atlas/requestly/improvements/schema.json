@@ -12,6 +12,9 @@
         "email": {
             "bsonType": "string"
         },
+        "estimation": {
+            "bsonType": "string"
+        },
         "name": {
             "bsonType": "string"
         },
@@ -20,6 +23,9 @@
         },
         "notes": {
             "bsonType": "string"
+        },
+        "priority": {
+            "bsonType": "int"
         },
         "size": {
             "bsonType": "string"
