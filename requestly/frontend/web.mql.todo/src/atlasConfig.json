@@ -1,0 +1,9 @@
+{
+    "appId": "requestly-vqxlh",
+    "appUrl": "https://realm.mongodb.com/groups/64833f81bee31d15ef061590/apps/649c775f7b1a37e2257c0639",
+    "baseUrl": "https://realm.mongodb.com",
+    "clientApiBaseUrl": "https://us-east-1.aws.realm.mongodb.com",
+    "dataApiBaseUrl": "https://us-east-1.aws.data.mongodb-api.com",
+    "dataExplorerLink": "https://cloud.mongodb.com/links/64833f81bee31d15ef061590/explorer/Cluster0/database/collection/find",
+    "dataSourceName": "mongodb-atlas"
+}
