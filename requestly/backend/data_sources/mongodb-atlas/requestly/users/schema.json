@@ -6,6 +6,9 @@
         "email": {
             "bsonType": "string"
         },
+        "name": {
+            "bsonType": "string"
+        },
         "userid": {
             "bsonType": "string"
         }
