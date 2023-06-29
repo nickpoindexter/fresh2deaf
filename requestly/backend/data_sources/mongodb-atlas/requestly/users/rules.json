@@ -16,6 +16,27 @@
             "insert": true,
             "delete": true,
             "search": true
+        },
+        {
+            "name": "userCreation",
+            "apply_when": {},
+            "document_filters": {
+                "write": true,
+                "read": true
+            },
+            "fields": {
+                "admin": {
+                    "write": false,
+                    "read": true
+                }
+            },
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {
+                "write": true,
+                "read": true
+            }
         }
     ]
 }
