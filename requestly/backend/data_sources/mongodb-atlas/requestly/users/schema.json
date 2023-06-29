@@ -1,0 +1,13 @@
+{
+    "properties": {
+        "admin": {
+            "bsonType": "bool"
+        },
+        "email": {
+            "bsonType": "string"
+        },
+        "userid": {
+            "bsonType": "string"
+        }
+    }
+}
