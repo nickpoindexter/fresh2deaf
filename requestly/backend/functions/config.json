@@ -1,12 +1,16 @@
 [
     {
+        "name": "createJiraTicket",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
         "name": "resetFunc",
         "private": false,
         "can_evaluate": {}
     },
     {
-        "name": "createJiraTicket",
-        "private": false,
-        "disable_arg_logs": true
+        "name": "onUserCreation",
+        "private": false
     }
 ]
