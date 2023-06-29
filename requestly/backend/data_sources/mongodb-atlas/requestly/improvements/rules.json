@@ -25,6 +25,10 @@
                 "read": true
             },
             "fields": {
+                "_id": {
+                    "write": false,
+                    "read": true
+                },
                 "estimation": {
                     "write": false,
                     "read": true
