@@ -17,7 +17,8 @@ import { createObjectId, getTodoId } from "../utils";
 import ImprovementsTable from "./ImprovementsTable";
 import { useImprovments } from "../hooks/useImprovements_mql";
 
-export function TodoItemsPage() {
+export function ImprovementsPage() {
+
   const { loading, todos, ...todoActions } = useTodos();
   const { improvements, saveImprovement } = useImprovments();
 
