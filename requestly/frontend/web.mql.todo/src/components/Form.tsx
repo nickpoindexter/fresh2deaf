@@ -5,29 +5,16 @@ import { Description, H3, Label } from '@leafygreen-ui/typography'
 import { Radio, RadioGroup } from "@leafygreen-ui/radio-group"
 import Button from "@leafygreen-ui/button";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-export const Form = () => {
-    const [open, setOpen] = useState(false);
-    const summaryRef = useRef();
-    const goalRef = useRef();
-    const teamRef = useRef();
+const RadioFormInputs = ({teamRef, sizeRef}) => {
     const [team, setTeam] = useState("");
     const [size, setSize] = useState("");
 
-    const handleSubmit = () => {
-        console.log({
-            'summary': summaryRef.current.value,
-            'goal': goalRef.current.value,
-            team,
-            size
-        });
-        return true;
-    };
-
-    const StyledTextInput = styled(TextInput)`
-        padding: 10px;
-    `;
+    useEffect(() => {
+        teamRef.current = team;
+        sizeRef.current = size;
+    }, [team, size]);
 
     const StyledRadioGroup = styled(RadioGroup)`
         padding: 10px;
@@ -42,24 +29,9 @@ export const Form = () => {
     const StyledDescription = styled(Description)`
         padding-left: 10px;
     `
-
     return (
     <>
-        <button onClick={() => setOpen(curr => !curr)}>test</button>
-        <Modal open={open} setOpen={setOpen} className="form-modal">
-            <StyledTextInput 
-                label="Summary"
-                description="Provide a brief summary of your idea"
-                placeholder="Your answer"
-                ref={summaryRef}
-            />
-            <StyledTextInput 
-                label="Goal"
-                description="What are the goals of this project?"
-                placeholder="Your answer"
-                ref={goalRef}
-            />
-            <StyledLabel>Team</StyledLabel>
+        <StyledLabel>Team</StyledLabel>
             <StyledDescription>Which team would own this?</StyledDescription>
             <StyledRadioGroup
                 className="team-radio-group"
@@ -86,6 +58,43 @@ export const Form = () => {
                 <Radio className="xtra-xtra-large-radio" value="XXL">XXL</Radio>
 
             </StyledRadioGroup>
+    </>
+    );
+}
+
+
+export const Form = () => {
+    const [open, setOpen] = useState(false);
+    const summaryRef = useRef();
+    const goalRef = useRef();
+    const teamRef = useRef();
+    const sizeRef = useRef();
+    const handleSubmit = () => {
+        console.log([summaryRef.current.value, goalRef.current.value, teamRef.current, sizeRef.current]);
+        return true;
+    };
+
+    const StyledTextInput = styled(TextInput)`
+        padding: 10px;
+    `;
+
+    return (
+    <>
+        <button onClick={() => setOpen(curr => !curr)}>test</button>
+        <Modal open={open} setOpen={setOpen} className="form-modal">
+            <StyledTextInput 
+                label="Summary"
+                description="Provide a brief summary of your idea"
+                placeholder="Your answer"
+                ref={summaryRef}
+            />
+            <StyledTextInput 
+                label="Goal"
+                description="What are the goals of this project?"
+                placeholder="Your answer"
+                ref={goalRef}
+            />
+            <RadioFormInputs teamRef={teamRef} sizeRef={sizeRef}></RadioFormInputs>
             <Button onClick={ () => setOpen(false) }>Cancel</Button>
             <Button 
             variant="primary"
