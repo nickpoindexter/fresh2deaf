@@ -1,11 +1,20 @@
 import { AppBar, Toolbar, Button, Typography } from "@mui/material";
-import { WelcomePage } from "./WelcomePage";
-import { TodoItemsPage } from "./TodoItemsPage";
+// import { WelcomePage } from "./WelcomePage";
+// import { TodoItemsPage } from "./TodoItemsPage";
 import { AppProvider, useApp } from "./RealmApp";
 import { ThemeProvider } from "./Theme";
+import { Home} from "./Home";
+import { Users } from "./Users";
 import { AppName } from "./AppName";
 import atlasConfig from "../atlasConfig.json";
 import "./App.css";
+import {
+  Link,
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+
 const { appId } = atlasConfig;
 
 export default function ProvidedApp() {
@@ -19,26 +28,36 @@ export default function ProvidedApp() {
 }
 
 function App() {
-  const { currentUser, logOut } = useApp();
+  const app = useApp();
   return (
     <div className="App">
-      <AppBar position="sticky">
-        <Toolbar>
-          <AppName />
-          {currentUser ? (
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={async () => {
-                await logOut();
-              }}
-            >
-              <Typography variant="button">Log Out</Typography>
-            </Button>
-          ) : null}
-        </Toolbar>
-      </AppBar>
-      {currentUser ? <TodoItemsPage /> : <WelcomePage />}
+      <BrowserRouter>
+        <AppBar position="sticky">
+          <Toolbar>
+            <AppName />
+            {app.currentUser ? (
+              <>
+              <Link to={`/users`}>
+                <Button variant="contained" color="primary">Users</Button>
+              </Link>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={async () => {
+                  await logOut();
+                }}
+              >
+                <Typography variant="button">Log Out</Typography>
+              </Button>
+              </>
+            ) : null}
+          </Toolbar>
+        </AppBar>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

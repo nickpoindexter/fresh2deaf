@@ -1,4 +1,4 @@
-// import Modal from "@leafygreen-ui/modal";
+import Modal from "@leafygreen-ui/modal";
 import { useState } from "react";
 
 export const Form = () => {
