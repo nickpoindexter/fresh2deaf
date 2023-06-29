@@ -40,7 +40,10 @@
             "bsonType": "string"
         },
         "votes": {
-            "bsonType": "int"
+            "bsonType": "array",
+            "items": {
+                "bsonType": "string"
+            }
         }
     },
     "title": "improvements"
