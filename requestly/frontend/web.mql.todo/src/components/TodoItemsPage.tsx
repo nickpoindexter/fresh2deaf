@@ -6,7 +6,7 @@ import {
   List,
   LinearProgress,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Form } from "./Form";
 import { useTodos } from "../hooks/useTodos";
 import { TodoItem } from "./TodoItem";
 import { useDraftTodos } from "../hooks/useDraftTodos";
@@ -32,14 +32,7 @@ export function TodoItemsPage() {
               todos.length === 1 ? "" : "s"
             }`}
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddIcon />}
-            onClick={() => draftTodoActions.createDraftTodo()}
-          >
-            Add To-Do
-          </Button>
+          <Form></Form>
           <List style={{ width: "100%" }}>
             {todos.map((todo) => (
               <TodoItem

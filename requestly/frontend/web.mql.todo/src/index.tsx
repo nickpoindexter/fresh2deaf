@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
+// window.Buffer = require('buffer/').Buffer;
 
 root.render(
   <React.StrictMode>
