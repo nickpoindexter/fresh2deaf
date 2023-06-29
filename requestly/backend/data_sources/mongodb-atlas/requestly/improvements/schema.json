@@ -36,6 +36,9 @@
         "team": {
             "bsonType": "string"
         },
+        "ticket": {
+            "bsonType": "string"
+        },
         "votes": {
             "bsonType": "int"
         }
