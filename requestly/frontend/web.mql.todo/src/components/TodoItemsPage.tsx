@@ -19,7 +19,7 @@ import { useImprovments } from "../hooks/useImprovements_mql";
 
 export function TodoItemsPage() {
   const { loading, todos, ...todoActions } = useTodos();
-  const { saveImprovement } = useImprovments();
+  const { improvements, saveImprovement } = useImprovments();
 
   const { draftTodos, ...draftTodoActions } = useDraftTodos();
   const showLoader = useShowLoader(loading, 200);
@@ -76,7 +76,7 @@ export function TodoItemsPage() {
               />
             ))}
           </List>
-          <ImprovementsTable improvements={[{hello: 'hello', world: 'world'}]}/>
+          <ImprovementsTable improvements={improvements}/>
         </div>
       )}
       <MoreInfo />
