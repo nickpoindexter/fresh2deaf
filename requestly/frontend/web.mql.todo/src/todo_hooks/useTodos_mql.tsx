@@ -1,6 +1,6 @@
 import React from "react";
-import { useWatch } from "./useWatch";
-import { useCollection } from "./useCollection";
+import { useWatch } from "../hooks/useWatch";
+import { useCollection } from "../hooks/useCollection";
 import { useApp } from "../components/RealmApp";
 import atlasConfig from "../atlasConfig.json";
 import {

@@ -51,3 +51,18 @@ export const getTodoIndex = (todos, todo) => {
   const idx = todos.findIndex((t) => isSameTodo(t, todo));
   return idx >= 0 ? idx : null;
 }
+
+export const getImprovementId = (improvement) => {
+  if (improvement._id instanceof Realm.BSON.ObjectId) {
+    return improvement._id.toHexString();
+  }
+  return improvement._id
+};
+
+export const isSameImprovement = (improvement1, improvement2) =>
+getImprovementId(improvement1) === getImprovementId(improvement2);
+
+export const getImprovementIndex = (improvements, improvement) => {
+  const idx = improvements.findIndex((i) => isSameImprovement(i, improvement));
+  return idx >= 0 ? idx : null;
+}

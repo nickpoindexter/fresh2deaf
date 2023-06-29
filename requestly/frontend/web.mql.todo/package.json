@@ -16,6 +16,7 @@
     "@leafygreen-ui/modal": "^15.0.3",
     "@leafygreen-ui/portal": "^4.1.4",
     "@leafygreen-ui/radio-group": "^10.1.5",
+    "@leafygreen-ui/table": "^10.0.0",
     "@leafygreen-ui/text-input": "^12.1.14",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",

@@ -7,16 +7,20 @@ import {
   LinearProgress,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useTodos } from "../hooks/useTodos";
+import { useTodos } from "../todo_hooks/useTodos";
 import { TodoItem } from "./TodoItem";
-import { useDraftTodos } from "../hooks/useDraftTodos";
+import { useDraftTodos } from "../todo_hooks/useDraftTodos";
 import { DraftTodoItem } from "./DraftTodoItem";
-import { useShowLoader } from "../hooks/util-hooks";
+import { useShowLoader } from "../todo_hooks/util-hooks";
 import { MoreInfo } from "./MoreInfo";
-import { getTodoId } from "../utils";
+import { createObjectId, getTodoId } from "../utils";
+import ImprovementsTable from "./ImprovementsTable";
+import { useImprovments } from "../hooks/useImprovements_mql";
 
 export function TodoItemsPage() {
   const { loading, todos, ...todoActions } = useTodos();
+  const { saveImprovement } = useImprovments();
+
   const { draftTodos, ...draftTodoActions } = useDraftTodos();
   const showLoader = useShowLoader(loading, 200);
   return (
@@ -40,6 +44,21 @@ export function TodoItemsPage() {
           >
             Add To-Do
           </Button>
+          {/* dummy button to verify the inserts work */}
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={async () => {
+              const dummyImprovement = {
+                _id: createObjectId(),
+                name: 'first try',
+                description: 'lets hope this works'
+              };
+              await saveImprovement(dummyImprovement);
+            }}
+          >
+            Create improvement
+          </Button>
           <List style={{ width: "100%" }}>
             {todos.map((todo) => (
               <TodoItem
@@ -57,6 +76,7 @@ export function TodoItemsPage() {
               />
             ))}
           </List>
+          <ImprovementsTable improvements={[{hello: 'hello', world: 'world'}]}/>
         </div>
       )}
       <MoreInfo />

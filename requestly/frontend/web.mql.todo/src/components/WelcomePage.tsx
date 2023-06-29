@@ -14,7 +14,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { MoreInfoDocsLink } from "./MoreInfo";
 import { toggleBoolean } from "../utils";
-import { useErrorAlert } from "../hooks/useErrorAlert";
+import { useErrorAlert } from "../todo_hooks/useErrorAlert";
 
 export function WelcomePage() {
   const app = useApp();
