@@ -39,7 +39,7 @@
         "ticket": {
             "bsonType": "string"
         },
-        "votes": {
+        "voters": {
             "bsonType": "array",
             "items": {
                 "bsonType": "string"
