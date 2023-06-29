@@ -1,9 +1,11 @@
 import { TodoItemsPage } from "./TodoItemsPage";
 import { WelcomePage } from "./WelcomePage";
+import { useApp } from "./RealmApp";
 import "./App.css";
 
-export function Home(currentUser: any) {
+export function Home() {
+    const app = useApp();
    return (
-    <div>{currentUser ? <TodoItemsPage /> : <WelcomePage />}</div>
+        <div>{app.currentUser ? <TodoItemsPage /> : <WelcomePage />}</div>
     );
 }

@@ -4,13 +4,19 @@ import atlasConfig from "../atlasConfig.json";
 
 const { baseUrl } = atlasConfig;
 
-function createApp(id) {
+function createApp(id: string) {
   return new Realm.App({ id, baseUrl });
+}
+
+interface appContextApp extends Realm.App {
+  currentUser: Realm.User,
+  logIn(): void,
+  logOut(): void
 }
 
 const AppContext = React.createContext(null);
 
-export function AppProvider({ appId, children }) {
+export function AppProvider({ appId, children }:{appId: string,children: any}) {
   // Store Realm.App in React state. If appId changes, all children will rerender and use the new App.
   const [app, setApp] = React.useState(createApp(appId));
   React.useEffect(() => {
@@ -20,7 +26,7 @@ export function AppProvider({ appId, children }) {
   const [currentUser, setCurrentUser] = React.useState(app.currentUser);
   // Wrap the base logIn function to save the logged in user in state
   const logIn = React.useCallback(
-    async (credentials) => {
+    async (credentials: Realm.Credentials) => {
       await app.logIn(credentials);
       setCurrentUser(app.currentUser);
     },
@@ -31,7 +37,8 @@ export function AppProvider({ appId, children }) {
     try {
       const user = app.currentUser;
       await user?.logOut();
-      await app.removeUser(user);
+      if(user)
+        await app.removeUser(user);
     } catch (err) {
       console.error(err);
     }
@@ -54,7 +61,7 @@ export function AppProvider({ appId, children }) {
   );
 }
 
-export function useApp() {
+export function useApp(): appContextApp {
   const app = React.useContext(AppContext);
   if (!app) {
     throw new Error(

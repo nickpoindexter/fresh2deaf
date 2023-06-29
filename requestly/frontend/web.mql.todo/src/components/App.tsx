@@ -1,6 +1,4 @@
 import { AppBar, Toolbar, Button, Typography } from "@mui/material";
-// import { WelcomePage } from "./WelcomePage";
-// import { TodoItemsPage } from "./TodoItemsPage";
 import { AppProvider, useApp } from "./RealmApp";
 import { ThemeProvider } from "./Theme";
 import { Home} from "./Home";
@@ -37,14 +35,16 @@ function App() {
             <AppName />
             {app.currentUser ? (
               <>
+              {app.currentUser.customData.admin ? (
               <Link to={`/users`}>
                 <Button variant="contained" color="primary">Users</Button>
               </Link>
+              ): null}
               <Button
                 variant="contained"
                 color="secondary"
                 onClick={async () => {
-                  await logOut();
+                  await app.logOut();
                 }}
               >
                 <Typography variant="button">Log Out</Typography>
