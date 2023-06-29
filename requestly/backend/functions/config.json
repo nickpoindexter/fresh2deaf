@@ -14,12 +14,23 @@
         "can_evaluate": {}
     },
     {
-        "name": "VoteForImprovement",
+        "name": "AddImprovementVote",
         "private": false,
         "disable_arg_logs": true
     },
     {
         "name": "addVoterToImprovement",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "RemoveImprovementVote",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "removeVoterFromImprovement",
         "private": false,
         "run_as_system": true,
         "disable_arg_logs": true
