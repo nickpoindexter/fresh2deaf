@@ -9,5 +9,5 @@ exports = async function(improvementId, userId){
     }
   })
   .catch(err => console.error(`Failed to update the item: ${err}`))
-
+ 
 };

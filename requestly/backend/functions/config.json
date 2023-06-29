@@ -5,16 +5,16 @@
         "disable_arg_logs": true
     },
     {
+        "name": "onUserCreation",
+        "private": false
+    },
+    {
         "name": "resetFunc",
         "private": false,
         "can_evaluate": {}
     },
     {
-        "name": "onUserCreation",
-        "private": false
-    },
-    {
-        "name": "VoteImprovement",
+        "name": "VoteForImprovement",
         "private": false,
         "disable_arg_logs": true
     },
