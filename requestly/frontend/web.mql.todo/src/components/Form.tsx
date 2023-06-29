@@ -1,45 +1,67 @@
 import Modal from "@leafygreen-ui/modal";
 import TextInput from "@leafygreen-ui/text-input";
+import styled from '@emotion/styled';
+import { Description, H3, Label } from '@leafygreen-ui/typography'
 import { Radio, RadioGroup } from "@leafygreen-ui/radio-group"
 import Button from "@leafygreen-ui/button";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export const Form = () => {
     const [open, setOpen] = useState(false);
-    const [summary, setSummary] = useState("");
-    const [goal, setGoal] = useState("");
+    const summaryRef = useRef();
+    const goalRef = useRef();
+    const teamRef = useRef();
     const [team, setTeam] = useState("");
     const [size, setSize] = useState("");
 
     const handleSubmit = () => {
         console.log({
-            summary,
-            goal,
+            'summary': summaryRef.current.value,
+            'goal': goalRef.current.value,
             team,
             size
         });
+        return true;
     };
+
+    const StyledTextInput = styled(TextInput)`
+        padding: 10px;
+    `;
+
+    const StyledRadioGroup = styled(RadioGroup)`
+        padding: 10px;
+        padding-bottom: 15px;
+        flex-direction: ${props => props.className !== "size-radio-group" ? 'row' : 'column' } !important
+    `;
+
+    const StyledLabel = styled(Label)`
+        padding: 10px;
+    `
+
+    const StyledDescription = styled(Description)`
+        padding-left: 10px;
+    `
 
     return (
     <>
         <button onClick={() => setOpen(curr => !curr)}>test</button>
         <Modal open={open} setOpen={setOpen} className="form-modal">
-            <TextInput 
+            <StyledTextInput 
                 label="Summary"
                 description="Provide a brief summary of your idea"
                 placeholder="Your answer"
-                value={summary}
-                onChange={ (e) => setSummary(e.target.value) }
+                ref={summaryRef}
             />
-            <TextInput 
+            <StyledTextInput 
                 label="Goal"
                 description="What are the goals of this project?"
                 placeholder="Your answer"
-                value={goal}
-                onChange={ (e) => setGoal(e.target.value) }
+                ref={goalRef}
             />
-            <RadioGroup
+            <StyledLabel>Team</StyledLabel>
+            <StyledDescription>Which team would own this?</StyledDescription>
+            <StyledRadioGroup
                 className="team-radio-group"
                 name="team-radio-group"
                 value={team}
@@ -48,9 +70,9 @@ export const Form = () => {
                 <Radio className="carbon-radio" value="carbon">Carbon</Radio>
                 <Radio className="oxygen-radio" value="oxygen">Oxygen</Radio>
                 <Radio className="both-radio" value="both">Both</Radio>
-            </RadioGroup>
-        
-            <RadioGroup
+            </StyledRadioGroup>
+            <StyledLabel>Size</StyledLabel> 
+            <StyledRadioGroup
                 className="size-radio-group"
                 name="size-radio-group"
                 value={size}
@@ -63,12 +85,15 @@ export const Form = () => {
                 <Radio className="xtra-large-radio" value="XL">XL</Radio>
                 <Radio className="xtra-xtra-large-radio" value="XXL">XXL</Radio>
 
-            </RadioGroup>
+            </StyledRadioGroup>
             <Button onClick={ () => setOpen(false) }>Cancel</Button>
             <Button 
             variant="primary"
             onClick={ () => {
-                handleSubmit();
+                if(handleSubmit()){
+                    setOpen(false);
+                }
+                
             }
             }
             >

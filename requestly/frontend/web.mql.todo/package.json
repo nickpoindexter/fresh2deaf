@@ -18,6 +18,7 @@
     "@leafygreen-ui/portal": "^4.1.4",
     "@leafygreen-ui/radio-group": "^10.1.5",
     "@leafygreen-ui/text-input": "^12.1.14",
+    "@leafygreen-ui/typography": "^16.5.1",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
     "@testing-library/jest-dom": "^5.11.4",
