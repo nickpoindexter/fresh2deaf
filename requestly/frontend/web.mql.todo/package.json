@@ -24,9 +24,13 @@
     "@testing-library/user-event": "^14.4.3",
     "esbuild": "^0.18.10",
     "listenercount": "^1.0.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0",
     "realm-web": "^2.0.0",
+    "sort-by": "^1.2.0",
     "tss-react": "^4.6.0",
     "vite-plugin-node-polyfills": "^0.9.0",
     "web-vitals": "^3.1.1"
