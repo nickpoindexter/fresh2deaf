@@ -10,7 +10,7 @@ import { useApp } from "../components/RealmApp";
  * @param {string} config.collection - The name of the collection.
  * @returns {Realm.Services.MongoDB.MongoDBCollection<DocType>} config.collection - The name of the collection.
  */
-export function useCollection({ cluster = "mongodb-atlas", db, collection }) {
+export function useCollection({  cluster = "mongodb-atlas",db, collection }:{cluster:string,db:string,collection:string}) {
   const app = useApp();
   return React.useMemo(() => {
     const mdb = app.currentUser.mongoClient(cluster);
