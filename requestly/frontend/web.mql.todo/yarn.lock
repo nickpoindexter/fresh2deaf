@@ -662,6 +662,20 @@
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/box/-/box-3.1.4.tgz#6ff56c8c205f83018373c9c0fe8f49681097dc0a"
   integrity sha512-cdEXGEafHuaH4zGx3NTX1bMOQ52EpoWA595BC1hh4/8BmXL+H4NFMGywuhZnvYjC4lyVGauX6sCspxrunbmfMQ==
 
+"@leafygreen-ui/button@^20.2.1":
+  version "20.2.1"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/button/-/button-20.2.1.tgz#f80d099e20e98343be2d8b4d3e6fad49ea908fcf"
+  integrity sha512-6/5RBOww7dxshKQR/RI/PDkwKeQh0oVydiGaJBqPgIz0wclBuaZQyQB+e/mkBJEK40eHV8B9yQ8MqbP/oADpVg==
+  dependencies:
+    "@leafygreen-ui/box" "^3.1.4"
+    "@leafygreen-ui/emotion" "^4.0.4"
+    "@leafygreen-ui/lib" "^10.4.0"
+    "@leafygreen-ui/loading-indicator" "^1.0.1"
+    "@leafygreen-ui/palette" "^4.0.4"
+    "@leafygreen-ui/ripple" "^1.1.9"
+    "@leafygreen-ui/tokens" "^2.1.1"
+    polished "^4.2.2"
+
 "@leafygreen-ui/emotion@^4.0.3", "@leafygreen-ui/emotion@^4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/emotion/-/emotion-4.0.4.tgz#8ed1a7cda533daf55866ee56a232a7e5b45c9838"
@@ -715,6 +729,18 @@
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
+"@leafygreen-ui/loading-indicator@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/loading-indicator/-/loading-indicator-1.0.1.tgz#30dc6972b08788df716c4f1dc34025f14254434d"
+  integrity sha512-3QRApImS+G/MlToGVdPfFKlNEkyvaFAL02Wq3dmBc3Fkd2It8rR2ThxgMhk25X7ezqBvIlTlLxDVfLkFfA8elw==
+  dependencies:
+    "@leafygreen-ui/emotion" "^4.0.4"
+    "@leafygreen-ui/lib" "^10.4.0"
+    "@leafygreen-ui/palette" "^4.0.4"
+    "@leafygreen-ui/tokens" "^2.1.1"
+    "@leafygreen-ui/typography" "^16.5.1"
+    "@lottiefiles/react-lottie-player" "^3.5.3"
+
 "@leafygreen-ui/modal@^15.0.3":
   version "15.0.3"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/modal/-/modal-15.0.3.tgz#dcf2b8f7ea54a8feb7e93fb5809a8255a41179a2"
@@ -763,6 +789,13 @@
     "@leafygreen-ui/tokens" "^2.1.1"
     "@leafygreen-ui/typography" "^16.5.1"
 
+"@leafygreen-ui/ripple@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@leafygreen-ui/ripple/-/ripple-1.1.9.tgz#a923bebc2182fc034ce56950302794351490775e"
+  integrity sha512-0sAyvOu8Tva9LYgpkMTvcP9XKyrS8i57hUq+QGpT9b3s4UrfHHtDD3TaDGll08GYViIwqQDEzLQLk3H3O3we8Q==
+  dependencies:
+    "@leafygreen-ui/tokens" "^2.0.2"
+
 "@leafygreen-ui/table@^10.0.0":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/table/-/table-10.0.3.tgz#a24b5e0552347531bb974c13271974fe935531b2"
@@ -793,7 +826,7 @@
     "@leafygreen-ui/tokens" "^2.1.1"
     "@leafygreen-ui/typography" "^16.5.1"
 
-"@leafygreen-ui/tokens@^2.0.1", "@leafygreen-ui/tokens@^2.1.0", "@leafygreen-ui/tokens@^2.1.1":
+"@leafygreen-ui/tokens@^2.0.1", "@leafygreen-ui/tokens@^2.0.2", "@leafygreen-ui/tokens@^2.1.0", "@leafygreen-ui/tokens@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@leafygreen-ui/tokens/-/tokens-2.1.1.tgz#dd92722646f702605635bc7552528962eb3da41c"
   integrity sha512-5mpyxRhp+8aY6eX6UYacDV6PLl3OieWG061ceAn2ThYaanIP64AMbodWifrF/IFMItJPFkwAtfPtJqugOFVb7Q==
@@ -811,6 +844,13 @@
     "@leafygreen-ui/palette" "^4.0.4"
     "@leafygreen-ui/polymorphic" "^1.3.2"
     "@leafygreen-ui/tokens" "^2.1.1"
+
+"@lottiefiles/react-lottie-player@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/react-lottie-player/-/react-lottie-player-3.5.3.tgz#e7e848f29577bc4eede87d677a0054de29378127"
+  integrity sha512-6pGbiTMjGnPddR1ur8M/TIDCiogZMc1aKIUbMEKXKAuNeYwZ2hvqwBJ+w5KRm88ccdcU88C2cGyLVsboFlSdVQ==
+  dependencies:
+    lottie-web "^5.10.2"
 
 "@mui/base@5.0.0-beta.5":
   version "5.0.0-beta.5"
@@ -2828,6 +2868,11 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lottie-web@^5.10.2:
+  version "5.12.2"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.12.2.tgz#579ca9fe6d3fd9e352571edd3c0be162492f68e5"
+  integrity sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==
 
 loupe@^2.3.1, loupe@^2.3.6:
   version "2.3.6"
