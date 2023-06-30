@@ -16,6 +16,7 @@ import { MoreInfo } from "./MoreInfo";
 import { createObjectId, getTodoId } from "../utils";
 import ImprovementsTable from "./ImprovementsTable";
 import { useImprovments } from "../hooks/useImprovements_mql";
+import { Form } from "./Form"
 
 export function ImprovementsPage() {
 
@@ -46,10 +47,8 @@ export function ImprovementsPage() {
             Add To-Do
           </Button>
           {/* dummy button to verify the inserts work */}
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={async () => {
+          <Form
+            onSubmit={async () => {
               const dummyImprovement = {
                 _id: createObjectId(),
                 name: 'first try',
@@ -59,7 +58,7 @@ export function ImprovementsPage() {
             }}
           >
             Create improvement
-          </Button>
+          </Form>
           <List style={{ width: "100%" }}>
             {todos.map((todo) => (
               <TodoItem
