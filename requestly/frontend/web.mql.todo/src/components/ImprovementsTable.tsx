@@ -70,8 +70,8 @@ export default function ImprovementsTable({improvements }: Props) {
           </Menu>
         </Cell>
         <Cell>
-          {datum.voters.length}
-          {!datum.voters.includes(currentUser.id) ?
+          {datum.voters?.length || 0}
+          {!datum.voters?.includes(currentUser.id) ?
             <IconButton aria-label="Vote Up" onClick={() => addImprovementVote(datum._id.toString())}>
               <Icon glyph="ArrowUp" />
             </IconButton>
