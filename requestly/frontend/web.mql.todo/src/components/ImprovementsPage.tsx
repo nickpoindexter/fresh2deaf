@@ -18,7 +18,8 @@ import ImprovementsTable from "./ImprovementsTable";
 import { useImprovments } from "../hooks/useImprovements_mql";
 import { Form } from "./Form"
 
-export function TodoItemsPage() {
+export function ImprovementsPage() {
+
   const { loading, todos, ...todoActions } = useTodos();
   const { improvements, saveImprovement } = useImprovments();
 
