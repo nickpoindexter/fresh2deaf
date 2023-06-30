@@ -48,13 +48,15 @@ export function ImprovementsPage() {
           </Button>
           {/* dummy button to verify the inserts work */}
           <Form
-            onSubmit={async () => {
-              const dummyImprovement = {
+            onSubmit={async ({name, description, team, size}) => {
+              const newImprovement = {
                 _id: createObjectId(),
-                name: 'first try',
-                description: 'lets hope this works'
+                name: name,
+                description: description,
+                team: team,
+                size: size,
               };
-              await saveImprovement(dummyImprovement);
+              await saveImprovement(newImprovement);
             }}
           >
             Create improvement

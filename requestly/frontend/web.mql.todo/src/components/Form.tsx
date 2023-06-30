@@ -70,8 +70,12 @@ export const Form = ({onSubmit}) => {
     const teamRef = useRef();
     const sizeRef = useRef();
     const handleSubmit = () => {
-        // onSubmit() here
-        console.log([summaryRef.current.value, goalRef.current.value, teamRef.current, sizeRef.current]);
+        onSubmit({
+            name: summaryRef.current.value,
+            description: goalRef.current.value,
+            team: teamRef.current,
+            size: sizeRef.current,
+        })
         return true;
     };
 
