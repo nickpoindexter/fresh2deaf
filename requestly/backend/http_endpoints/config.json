@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "route": "/uploadimprovement",
+        "http_method": "POST",
+        "function_name": "uploadImprovement",
+        "validation_method": "SECRET_AS_QUERY_PARAM",
+        "secret_name": "canIupload",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    }
+]
