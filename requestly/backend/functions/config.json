@@ -48,5 +48,9 @@
     {
         "name": "onUserDeletion",
         "private": true
+    },
+    {
+        "name": "confirmUser",
+        "private": true
     }
 ]
