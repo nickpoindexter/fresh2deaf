@@ -1,21 +1,21 @@
 import Modal from "@leafygreen-ui/modal";
 import TextInput from "@leafygreen-ui/text-input";
 import styled from '@emotion/styled';
-import { Description, H3, Label } from '@leafygreen-ui/typography'
+import { Description, Label } from '@leafygreen-ui/typography'
 import { Radio, RadioGroup } from "@leafygreen-ui/radio-group"
 import Button from "@leafygreen-ui/button";
+import { Improvement } from "../types";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const RadioFormInputs = ({teamRef, sizeRef}) => {
-    const [team, setTeam] = useState("");
-    const [size, setSize] = useState("");
+type RadioProps = {
+    team: string,
+    size: string,
+    setSize: (newSize: string) => void;
+    setTeam: (newTeam: string) => void;
+  };
 
-    useEffect(() => {
-        teamRef.current = team;
-        sizeRef.current = size;
-    }, [team, size]);
-
+const RadioFormInputs = ({team, setTeam, size, setSize}:RadioProps) => {
     const StyledRadioGroup = styled(RadioGroup)`
         padding: 10px;
         padding-bottom: 15px;
@@ -56,66 +56,70 @@ const RadioFormInputs = ({teamRef, sizeRef}) => {
                 <Radio className="large-radio" value="L">L</Radio>
                 <Radio className="xtra-large-radio" value="XL">XL</Radio>
                 <Radio className="xtra-xtra-large-radio" value="XXL">XXL</Radio>
-
             </StyledRadioGroup>
     </>
     );
 }
 
+type FormProps = {
+    Submit: (improvement: Improvement, isEdit: boolean) => void;
+    editableImprovement?: Improvement;
+    setOpen: (open: boolean) => void;
+    open: boolean;
+  };
 
-export const Form = ({onSubmit}) => {
-    const [open, setOpen] = useState(false);
-    const summaryRef = useRef();
-    const goalRef = useRef();
-    const teamRef = useRef();
-    const sizeRef = useRef();
-    const handleSubmit = () => {
-        onSubmit({
-            name: summaryRef.current.value,
-            description: goalRef.current.value,
-            team: teamRef.current,
-            size: sizeRef.current,
-        })
-        return true;
-    };
+const StyledTextInput = styled(TextInput)`
+  padding: 10px;
+`;
 
-    const StyledTextInput = styled(TextInput)`
-        padding: 10px;
-    `;
+export const Form = ({Submit, editableImprovement, open, setOpen}: FormProps) => {
+    const [summary, setSummary] = useState<string>(editableImprovement?.name ?? "");
+    const [goal, setGoal] = useState<string>(editableImprovement?.description ?? "");
+    const [team, setTeam] = useState<string>(editableImprovement?.team ?? "");
+    const [size, setSize] = useState<string>(editableImprovement?.size ?? "");
+
+    const onPressSubmit = () => {
+        Submit({
+            ...editableImprovement,
+            name: summary,
+            description: goal,
+            team: team,
+            size: size,
+        }, !!editableImprovement)
+        setOpen(false);
+      };
+
+    useEffect(() => {
+       setSummary(editableImprovement?.name ?? "");
+       setGoal(editableImprovement?.description?? "") ;
+       setTeam(editableImprovement?.team ?? "");
+       setSize(editableImprovement?.size ?? "");
+    }, [editableImprovement?.name, editableImprovement?.description, editableImprovement?.team, editableImprovement?.size]);
 
     return (
-    <>
-        <Button
-        variant="primaryOutline"
-        size="small"
-        onClick={() => setOpen(curr => !curr)}>Create improvement</Button>
         <Modal open={open} setOpen={setOpen} className="form-modal">
             <StyledTextInput 
                 label="Summary"
                 description="Provide a brief summary of your idea"
                 placeholder="Your answer"
-                ref={summaryRef}
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
             />
             <StyledTextInput 
                 label="Goal"
                 description="What are the goals of this project?"
                 placeholder="Your answer"
-                ref={goalRef}
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
             />
-            <RadioFormInputs teamRef={teamRef} sizeRef={sizeRef}></RadioFormInputs>
+            <RadioFormInputs team={team} setTeam={setTeam} size={size} setSize={setSize}></RadioFormInputs>
             <Button onClick={ () => setOpen(false) }>Cancel</Button>
             <Button 
             variant="primary"
-            onClick={ () => {
-                if(handleSubmit()){
-                    setOpen(false);
-                }
-            }
-            }
+            onClick={() => onPressSubmit()}
             >
                 Submit
             </Button>
         </Modal>
-    </>
     );
 }

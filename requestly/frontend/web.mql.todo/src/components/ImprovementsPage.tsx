@@ -1,27 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Button,
-  Typography,
   List,
   LinearProgress,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import { useTodos } from "../todo_hooks/useTodos";
 import { TodoItem } from "./TodoItem";
 import { useDraftTodos } from "../todo_hooks/useDraftTodos";
 import { DraftTodoItem } from "./DraftTodoItem";
 import { useShowLoader } from "../todo_hooks/util-hooks";
-import { MoreInfo } from "./MoreInfo";
 import { createObjectId, getTodoId } from "../utils";
 import ImprovementsTable from "./ImprovementsTable";
 import { useImprovments } from "../hooks/useImprovements_mql";
 import { Form } from "./Form"
+import { Improvement } from "../types";
 
 export function ImprovementsPage() {
-
+  const [openModal, setOpenModal] = React.useState(false);
+  const [editableImprovement, setEditableImprovement] = useState<Improvement | undefined>(undefined);
   const { loading, todos, ...todoActions } = useTodos();
-  const { improvements, saveImprovement } = useImprovments();
+  const { improvements, saveImprovement, updateImprovement } = useImprovments();
+
+  const openModalToEdit = (editableImprovement: Improvement) => {
+    setEditableImprovement(editableImprovement);
+    setOpenModal(true);
+  };
+
+  const submitImprovement = async (improvement: Improvement, isEdit: boolean) => {
+    const newImprovement = {
+      _id: createObjectId(),
+      name: improvement.name,
+      description: improvement.description,
+      team: improvement.team,
+      size: improvement.size,
+    };
+
+    if (isEdit) {
+      await updateImprovement(newImprovement);
+    } else {
+      await saveImprovement(newImprovement);
+    }
+  }
 
   const { draftTodos, ...draftTodoActions } = useDraftTodos();
   const showLoader = useShowLoader(loading, 200);
@@ -33,17 +53,20 @@ export function ImprovementsPage() {
         ) : null
       ) : (
         <div className="todo-items-container">
+          <Button
+            variant="primaryOutline"
+            size="small"
+            onClick={() => {
+              setEditableImprovement(undefined)
+              setOpenModal(curr => !curr)
+            }}>
+              Create improvement
+          </Button>
           <Form
-            onSubmit={async ({name, description, team, size}) => {
-              const newImprovement = {
-                _id: createObjectId(),
-                name: name,
-                description: description,
-                team: team,
-                size: size,
-              };
-              await saveImprovement(newImprovement);
-            }}
+            Submit={submitImprovement}
+            open={openModal}
+            setOpen={setOpenModal}
+            editableImprovement={editableImprovement}
           >
             Create improvement
           </Form>
@@ -64,7 +87,7 @@ export function ImprovementsPage() {
               />
             ))}
           </List>
-          <ImprovementsTable improvements={improvements}/>
+          <ImprovementsTable improvements={improvements} setModalOpen={(editable) => openModalToEdit(editable)}/>
         </div>
       )}
     </Container>

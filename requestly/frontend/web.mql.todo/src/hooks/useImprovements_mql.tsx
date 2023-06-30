@@ -10,6 +10,7 @@ import {
   removeValueAtIndex,
   getImprovementIndex,
 } from "../utils";
+import { Improvement } from "../types";
 
 const { dataSourceName } = atlasConfig;
 
@@ -93,7 +94,7 @@ export function useImprovments() {
   });
 
   // Given a draft improvment, format it and then insert it
-  const saveImprovement = async (draftImprovement) => {
+  const saveImprovement = async (draftImprovement: Improvement) => {
       try {
         await improvementItemCollection.insertOne(draftImprovement);
       } catch (err) {
@@ -107,15 +108,15 @@ export function useImprovments() {
   };
 
   // Toggle whether or not a given improvment is complete
-  const toggleImprovement = async (improvement) => {
+  const updateImprovement = async (improvement: Improvement) => {
     await improvementItemCollection.updateOne(
       { _id: improvement._id },
-      { $set: { isComplete: !improvement.isComplete } }
+      improvement
     );
   };
 
   // Delete a given improvement
-  const deleteImprovement = async (improvement) => {
+  const deleteImprovement = async (improvement: Improvement) => {
     await improvementItemCollection.deleteOne({ _id: improvement._id });
   };
 
@@ -123,7 +124,7 @@ export function useImprovments() {
     loading,
     improvements,
     saveImprovement,
-    toggleImprovement,
+    updateImprovement,
     deleteImprovement,
   };
 }

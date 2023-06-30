@@ -1,4 +1,3 @@
-import React from 'react';
 import {Table, TableHeader, Row, Cell} from '@leafygreen-ui/table'
 import { useApp } from './RealmApp';
 import { Menu, MenuItem } from '@leafygreen-ui/menu';
@@ -6,29 +5,14 @@ import { useImprovments } from "../hooks/useImprovements_mql";
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import IconButton from '@leafygreen-ui/icon-button';
-
-interface Improvements {
-    _id?: string
-    created?: number
-    description?: string
-    email?: string
-    estimation?: string
-    name?: string
-    next_steps?: string
-    notes?: string
-    priority?: string
-    size?: string
-    target_quarter?: string
-    team?: string
-    ticket?: string
-    votes?: number
-}
+import { Improvement } from "../types";
 
 interface Props {
-    improvements: Array<Improvements>
+    improvements: Array<Improvement>
+    setModalOpen: (editable: Improvement) => void;
 }
 
-export default function ImprovementsTable({improvements }: Props) {
+export default function ImprovementsTable({improvements, setModalOpen }: Props) {
   const { currentUser } = useApp();
   const addImprovementVote  = (improvementId: string) => {
     currentUser.functions.AddImprovementVote(improvementId)
@@ -66,6 +50,9 @@ export default function ImprovementsTable({improvements }: Props) {
               </Button>
             }
           >
+            <MenuItem onClick={() => setModalOpen(datum)}>
+              Edit
+            </MenuItem>
             <MenuItem onClick={() => deleteImprovement(datum)}>
               Delete
             </MenuItem>
