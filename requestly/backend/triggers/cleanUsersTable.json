@@ -1,0 +1,19 @@
+{
+    "id": "649f2e8f58ae0320139b81e6",
+    "name": "cleanUsersTable",
+    "type": "AUTHENTICATION",
+    "config": {
+        "operation_type": "DELETE",
+        "providers": [
+            "local-userpass"
+        ]
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "onUserDeletion"
+            }
+        }
+    }
+}
