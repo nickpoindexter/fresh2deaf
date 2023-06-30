@@ -33,20 +33,6 @@ export function ImprovementsPage() {
         ) : null
       ) : (
         <div className="todo-items-container">
-          <Typography component="p" variant="h5">
-            {`You have ${todos.length} To-Do Item${
-              todos.length === 1 ? "" : "s"
-            }`}
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddIcon />}
-            onClick={() => draftTodoActions.createDraftTodo()}
-          >
-            Add To-Do
-          </Button>
-          {/* dummy button to verify the inserts work */}
           <Form
             onSubmit={async ({name, description, team, size}) => {
               const newImprovement = {
@@ -81,7 +67,6 @@ export function ImprovementsPage() {
           <ImprovementsTable improvements={improvements}/>
         </div>
       )}
-      <MoreInfo />
     </Container>
   );
 }
