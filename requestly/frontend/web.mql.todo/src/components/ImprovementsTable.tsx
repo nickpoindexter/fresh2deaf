@@ -43,7 +43,8 @@ export default function ImprovementsTable({improvements }: Props) {
         columns={[
         <TableHeader label="Name" id="name" />,
         <TableHeader label="Description" id="description" />,
-        <TableHeader label="Notes" id="notes" />,
+        <TableHeader label="Team" id="team" />,
+        <TableHeader label="Size" id="size" />,
         <TableHeader label="Actions" id="action" />,
         <TableHeader label="Votes" id="votes" />,
         ]}
@@ -52,7 +53,8 @@ export default function ImprovementsTable({improvements }: Props) {
       {({ datum }) => <Row>
         <Cell>{datum.name}</Cell>
         <Cell>{datum.description}</Cell>
-        <Cell>{datum.notes ?? ""}</Cell>
+        <Cell>{datum.team}</Cell>
+        <Cell>{datum.size}</Cell>
         <Cell>
           <Menu
             trigger={
