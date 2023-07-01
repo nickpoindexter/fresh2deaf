@@ -107,7 +107,7 @@ export function useImprovments() {
       }
   };
 
-  // Toggle whether or not a given improvment is complete
+  // Update given improvement
   const updateImprovement = async (improvement: Improvement) => {
     await improvementItemCollection.updateOne(
       { _id: improvement._id },

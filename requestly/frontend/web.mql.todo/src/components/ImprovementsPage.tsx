@@ -28,18 +28,10 @@ export function ImprovementsPage() {
   };
 
   const submitImprovement = async (improvement: Improvement, isEdit: boolean) => {
-    const newImprovement = {
-      _id: createObjectId(),
-      name: improvement.name,
-      description: improvement.description,
-      team: improvement.team,
-      size: improvement.size,
-    };
-
     if (isEdit) {
-      await updateImprovement(newImprovement);
+      await updateImprovement(improvement);
     } else {
-      await saveImprovement(newImprovement);
+      await saveImprovement({...improvement, _id: createObjectId()});
     }
   }
 
